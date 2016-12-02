@@ -3,7 +3,7 @@ schtasks /f /ru "NT Authority\System" /Create /xml WindowsUpdateLoop.xml /tn Win
 
 if(-not(test-path $env:appdata\Roaming\Boxstarter))
 {
-	mkdir -force c:\windows\setup
+	mkdir -force c:\windows\setup | out-null
 	cd \windows\setup
 	powershell -noninteractive -noprofile -executionpolicy unrestricted -command "(new-object System.Net.WebClient).DownloadFile('http://boxstarter.org/downloads/Boxstarter.2.8.29.zip','Boxstarter.zip')"
 	powershell -NoProfile -ExecutionPolicy unrestricted -Command "(new-object System.Net.WebClient).DownloadFile('http://installer-bin.streambox.com/7za.exe','7za.exe')"
