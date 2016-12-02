@@ -1,5 +1,5 @@
 schtasks /delete /f /tn WindowsUpdateLoop
-schtasks /f /ru "NT Authority\System" /Create /xml WindowsUpdateLoop.xml /tn WindowsUpdateLoop
+schtasks /create /sc onlogon /tn boxstarter /tr "cmd /c start /d %windir%\setup cmd /c C:\windows\system32\WindowsPowerShell\v1.0\powershell.exe -file update.ps1"
 
 if(-not(test-path $env:appdata\Roaming\Boxstarter))
 {
