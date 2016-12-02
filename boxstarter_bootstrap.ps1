@@ -1,6 +1,3 @@
-update-executionpolicy unrestricted
-
-
 if(-not(test-path $env:appdata\Roaming\Boxstarter))
 {
 	mkdir -force c:\windows\setup
