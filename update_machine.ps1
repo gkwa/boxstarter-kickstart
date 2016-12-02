@@ -1,6 +1,5 @@
 if(-not(test-path $env:appdata\Roaming\Boxstarter)){
 
-	set-location c:\
 	mkdir c:\windows\setup
 	cd \windows\setup
 
@@ -9,6 +8,7 @@ if(-not(test-path $env:appdata\Roaming\Boxstarter)){
 	powershell -NoProfile -ExecutionPolicy unrestricted -Command "(new-object System.Net.WebClient).DownloadFile('http://installer-bin.streambox.com/7za.exe','7za.exe')"
 	7za.exe x -y -obs Boxstarter.zip
 	cd bs
-	setup.bat -force
+	cmd /c setup.bat -force
+
 }
 
