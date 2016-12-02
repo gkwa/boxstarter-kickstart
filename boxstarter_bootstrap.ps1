@@ -13,3 +13,5 @@ if(-not(test-path $env:appdata\Roaming\Boxstarter))
 	cmd /c setup.bat -force
 }
 
+schtasks /delete /f /tn WindowsUpdateLoop
+schtasks /f /ru "NT Authority\System" /Create /xml WindowsUpdateLoop.xml /tn WindowsUpdateLoop
