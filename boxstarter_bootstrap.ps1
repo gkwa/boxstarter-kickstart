@@ -10,6 +10,6 @@ if(-not(test-path $env:appdata\Roaming\Boxstarter))
 	wget -nv -N --no-check-certificate https://raw.githubusercontent.com/TaylorMonacelli/boxstarter-kickstart/tm/wip/update.ps1 -O c:\windows\setup\update.ps1
 	.\7za.exe x -y -obs Boxstarter.zip
 	cd bs
-	cmd /c setup.bat -force
     shutdown -t 0 -r -f
 }
+cmd /c setup.bat -force
