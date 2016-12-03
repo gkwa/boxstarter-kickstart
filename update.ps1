@@ -1,3 +1,30 @@
+Function Write-Log {
+    [CmdletBinding()]
+    Param(
+    [Parameter(Mandatory=$False)]
+    [ValidateSet("INFO","WARN","ERROR","FATAL","DEBUG")]
+    [String]
+    $Level = "INFO",
+
+    [Parameter(Mandatory=$True)]
+    [string]
+    $Message,
+
+    [Parameter(Mandatory=$False)]
+    [string]
+    $logfile
+    )
+
+    $Stamp = (Get-Date).toString("yyyy/MM/dd HH:mm:ss")
+    $Line = "$Stamp $Level $Message"
+    If($logfile) {
+        Add-Content $logfile -Value $Line
+    }
+    Else {
+        Write-Output $Line
+    }
+}
+
 if(!(test-path "$env:appdata\Boxstarter\BoxstarterShell.ps1"))
 {
 	mkdir -force c:\windows\setup | out-null
@@ -23,7 +50,10 @@ $Boxstarter.RebootOK=$true
 
 while(1)
 {
-	install-windowsupdate -accepteula -suppressreboot
+	$result = install-windowsupdate -accepteula -suppressreboot 
+	Write-Log -level INFO -message "$result" -logfile "c:\windows\setup\install-windowsupdate.log"
+	write-host "$result"
+
 	if(test-pendingreboot)
 	{
 		invoke-reboot
