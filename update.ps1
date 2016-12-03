@@ -1,5 +1,3 @@
-Set-PSDebug -Trace 1
-
 Function Write-Log {
     [CmdletBinding()]
     Param(
