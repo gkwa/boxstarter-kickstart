@@ -46,7 +46,7 @@ if(!(test-path "$env:appdata\Boxstarter\BoxstarterShell.ps1"))
 update-executionpolicy unrestricted
 
 $Boxstarter.RebootOK=$true
-
+$Boxstarter.AutoLogin=$true
 
 while(1)
 {
