@@ -1,3 +1,5 @@
+Set-PSDebug -Trace 1
+
 mkdir -force c:\windows\setup | out-null
 cd \windows\setup
 
