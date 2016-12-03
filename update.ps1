@@ -43,7 +43,7 @@ if(!(test-path "$env:appdata\Boxstarter\BoxstarterShell.ps1"))
 
 Set-PSDebug -Trace 2
 
-. "$env:appdata\Boxstarter\BoxstarterShell.ps1"
+. $env:appdata\Boxstarter\BoxstarterShell.ps1
 
 update-executionpolicy unrestricted
 
@@ -53,11 +53,11 @@ $Boxstarter.SuppressLogging=$false
 
 while(1)
 {
-
 	# logs go here by default
 	# $env:LocalAppData\Boxstarter\Boxstarter.log
-
+	cmd /c start powershell -command ". $env:appdata\Boxstarter\BoxstarterShell.ps1; Get-Content -Wait -Path $Boxstarter.log"
 	$result = install-windowsupdate -accepteula -verbose
+
 #	write-host "$result"
 #	Write-Log -level INFO -message "[$result]" -logfile "c:\windows\setup\wu.log"
 
