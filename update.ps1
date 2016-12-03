@@ -53,6 +53,10 @@ $Boxstarter.SuppressLogging=$false
 
 while(1)
 {
+
+	# logs go here by default
+	# $env:LocalAppData\Boxstarter\Boxstarter.log
+
 	$result = install-windowsupdate -accepteula -verbose
 #	write-host "$result"
 #	Write-Log -level INFO -message "[$result]" -logfile "c:\windows\setup\wu.log"

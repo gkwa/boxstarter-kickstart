@@ -1,6 +1,9 @@
 Set-PSDebug -Trace 2
 
 
+
+
+
 powershell -noninteractive -noprofile -executionpolicy unrestricted -command "(new-object System.Net.WebClient).DownloadFile('http://installer-bin.streambox.com/wget.exe','wget.exe')"
 # wget --no-verbose --timestamping --no-check-certificate https://raw.githubusercontent.com/TaylorMonacelli/boxstarter-kickstart/tm/wip/WindowsUpdateLoop.xml
 
