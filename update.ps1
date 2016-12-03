@@ -56,7 +56,7 @@ while(1)
 
 	if(test-pendingreboot)
 	{
-		invoke-reboot
+		shutdown -t 0 -r -f
 	}
 
 	sleep -s 30
