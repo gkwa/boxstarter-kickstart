@@ -49,10 +49,11 @@ update-executionpolicy unrestricted
 
 $Boxstarter.RebootOK=$true
 $Boxstarter.AutoLogin=$true
+$Boxstarter.SuppressLogging=$false
 
 while(1)
 {
-	$result = install-windowsupdate -accepteula
+	$result = install-windowsupdate -accepteula -verbose
 #	write-host "$result"
 #	Write-Log -level INFO -message "[$result]" -logfile "c:\windows\setup\wu.log"
 
