@@ -57,7 +57,7 @@ while(1)
 	# $env:LocalAppData\Boxstarter\Boxstarter.log
 	cmd /c start powershell -command ". $env:appdata\Boxstarter\BoxstarterShell.ps1; Get-Content -Wait -Path $Boxstarter.log"
 
-	Names = @(
+	$Names = @(
 		'cmdlet',
 		'ParameterBinderBase',
 		'ParameterBinderController',
