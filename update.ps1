@@ -51,7 +51,7 @@ $Boxstarter.RebootOK=$true
 while(1)
 {
 	$result = install-windowsupdate -accepteula -suppressreboot 
-	Write-Log -level INFO -message "$result" -logfile "c:\windows\setup\install-windowsupdate.log"
+	Write-Log -level INFO -message "[$result]" -logfile "c:\windows\setup\install-windowsupdate.log"
 	write-host "$result"
 
 	if(test-pendingreboot)
