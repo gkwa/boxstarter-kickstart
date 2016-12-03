@@ -56,10 +56,7 @@ while(1)
 	# logs go here by default
 	# $env:LocalAppData\Boxstarter\Boxstarter.log
 	cmd /c start powershell -command ". $env:appdata\Boxstarter\BoxstarterShell.ps1; Get-Content -Wait -Path $Boxstarter.log"
-	$result = install-windowsupdate -accepteula -verbose
-
-#	write-host "$result"
-#	Write-Log -level INFO -message "[$result]" -logfile "c:\windows\setup\wu.log"
+	Trace-Command –Name CommandDiscovery –Expression {install-windowsupdate -accepteula -verbose} -PSHost
 
 	if(test-pendingreboot)
 	{
