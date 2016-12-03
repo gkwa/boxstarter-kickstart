@@ -1,3 +1,5 @@
+Set-PSDebug -Trace 1
+
 Function Write-Log {
     [CmdletBinding()]
     Param(
@@ -50,7 +52,7 @@ $Boxstarter.AutoLogin=$true
 
 while(1)
 {
-	$result = install-windowsupdate -accepteula -suppressreboot 
+	$result = install-windowsupdate -accepteula
 #	write-host "$result"
 #	Write-Log -level INFO -message "[$result]" -logfile "c:\windows\setup\wu.log"
 
