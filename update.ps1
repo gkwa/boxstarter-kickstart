@@ -41,7 +41,7 @@ if(!(test-path "$env:appdata\Boxstarter\BoxstarterShell.ps1"))
 	shutdown -t 0 -r -f
 }
 
-Set-PSDebug -Trace 1
+Set-PSDebug -Trace 2
 
 . "$env:appdata\Boxstarter\BoxstarterShell.ps1"
 
