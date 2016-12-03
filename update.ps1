@@ -11,10 +11,8 @@ if(!(test-path "$env:appdata\Boxstarter\BoxstarterShell.ps1"))
 	.\7za.exe x -y -obs Boxstarter.zip
 	cd bs
 	cmd /c setup.bat -force
-
+	shutdown -t 0 -r -f
 }
-
-
 
 . "$env:appdata\Boxstarter\BoxstarterShell.ps1"
 
