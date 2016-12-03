@@ -5,8 +5,8 @@ if(!(test-path "$env:appdata\Boxstarter\BoxstarterShell.ps1"))
 	powershell -noninteractive -noprofile -executionpolicy unrestricted -command "(new-object System.Net.WebClient).DownloadFile('http://boxstarter.org/downloads/Boxstarter.2.8.29.zip','Boxstarter.zip')"
 	powershell -NoProfile -ExecutionPolicy unrestricted -Command "(new-object System.Net.WebClient).DownloadFile('http://installer-bin.streambox.com/7za.exe','7za.exe')"
 
-# FIXME: Github doesn't support timestamps
-#	wget -nv -N --no-check-certificate https://raw.githubusercontent.com/TaylorMonacelli/boxstarter-kickstart/tm/wip/update.ps1 -O c:\windows\setup\update.ps1
+	# FIXME: Github doesn't support timestamps
+	#	wget -nv -N --no-check-certificate https://raw.githubusercontent.com/TaylorMonacelli/boxstarter-kickstart/tm/wip/update.ps1 -O c:\windows\setup\update.ps1
 	wget -nv -N --no-check-certificate https://raw.githubusercontent.com/TaylorMonacelli/boxstarter-kickstart/tm/wip/update.ps1 -O c:\windows\setup\update.ps1
 	.\7za.exe x -y -obs Boxstarter.zip
 	cd bs
@@ -20,8 +20,14 @@ update-executionpolicy unrestricted
 
 $Boxstarter.RebootOK=$true
 
-install-windowsupdate -accepteula -suppressreboot
-if(test-pendingreboot)
+
+while(1)
 {
-	invoke-reboot
+	install-windowsupdate -accepteula -suppressreboot
+	if(test-pendingreboot)
+	{
+		invoke-reboot
+	}
+
+	sleep -s 30
 }
