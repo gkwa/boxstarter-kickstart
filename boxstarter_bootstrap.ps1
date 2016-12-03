@@ -4,6 +4,7 @@ mkdir -force c:\windows\setup | out-null
 cd \windows\setup
 
 schtasks /delete /f /tn WindowsUpdateLoop
+schtasks /delete /f /tn boxstarter
 schtasks /create /sc onlogon /tn boxstarter /tr "cmd /c start /d %windir%\setup cmd /c C:\windows\system32\WindowsPowerShell\v1.0\powershell.exe -file update.ps1"
 
 if(-not(test-path $env:appdata\Roaming\Boxstarter))
