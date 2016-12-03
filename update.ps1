@@ -1,5 +1,3 @@
-Set-PSDebug -Trace 1
-
 Function Write-Log {
     [CmdletBinding()]
     Param(
@@ -42,6 +40,8 @@ if(!(test-path "$env:appdata\Boxstarter\BoxstarterShell.ps1"))
 	cmd /c setup.bat -force
 	shutdown -t 0 -r -f
 }
+
+Set-PSDebug -Trace 1
 
 . "$env:appdata\Boxstarter\BoxstarterShell.ps1"
 
