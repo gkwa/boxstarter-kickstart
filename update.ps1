@@ -1,18 +1,18 @@
 Function Write-Log {
     [CmdletBinding()]
     Param(
-    [Parameter(Mandatory=$False)]
-    [ValidateSet("INFO","WARN","ERROR","FATAL","DEBUG")]
-    [String]
-    $Level = "INFO",
+		[Parameter(Mandatory=$False)]
+		[ValidateSet("INFO","WARN","ERROR","FATAL","DEBUG")]
+		[String]
+		$Level = "INFO",
 
-    [Parameter(Mandatory=$True)]
-    [string]
-    $Message,
+		[Parameter(Mandatory=$True)]
+		[string]
+		$Message,
 
-    [Parameter(Mandatory=$False)]
-    [string]
-    $logfile
+		[Parameter(Mandatory=$False)]
+		[string]
+		$logfile
     )
 
     $Stamp = (Get-Date).toString("yyyy/MM/dd HH:mm:ss")
@@ -56,7 +56,17 @@ while(1)
 	# logs go here by default
 	# $env:LocalAppData\Boxstarter\Boxstarter.log
 	cmd /c start powershell -command ". $env:appdata\Boxstarter\BoxstarterShell.ps1; Get-Content -Wait -Path $Boxstarter.log"
-	Trace-Command –Name CommandDiscovery –Expression {install-windowsupdate -accepteula -verbose} -PSHost
+
+	Names = @(
+		'cmdlet',
+		'ParameterBinderBase',
+		'ParameterBinderController',
+		'ParameterBinding',
+		'TypeConversion',
+		'CommandDiscovery'
+	)
+
+	Trace-Command –Name $Names –Expression {install-windowsupdate -accepteula -verbose} -PSHost
 
 	if(test-pendingreboot)
 	{
