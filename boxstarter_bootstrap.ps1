@@ -14,3 +14,4 @@ if(-not(test-path $env:appdata\Roaming\Boxstarter))
     shutdown -t 0 -r -f
 }
 cmd /c setup.bat -force
+shutdown -t 0 -r -f
